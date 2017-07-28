@@ -6,7 +6,7 @@ def readme():
 
 
 setup(name='salesforce-session',
-      version='0.1b',
+      version='0.1c',
       description='A wrapper for simple-salesforce that creates a session and build valid SQL queries by passing query params rather than the raw sql.',
       classifiers=[
          'Development Status :: 4 - Beta',
@@ -23,7 +23,7 @@ setup(name='salesforce-session',
       author='John Martin',
       author_email='john.martin@configure.systems',
       license='MIT',
-      py_modules=['salesforce_session'],
+      packages=['salesforce_session',],
       install_requires=[
           'simple-salesforce',
           ],
