@@ -9,7 +9,7 @@ A python wrapper for [simple-salesforce](https://github.com/simple-salesforce/si
 
 ## Pip Installation
 
-`pip install salesforce-session`
+`pip install SalesForceSession`
 
 # Usage
 
