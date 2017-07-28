@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 
-setup(name='SalesForceSession',
+setup(name='salesforce-session',
       version='0.1',
       description='A wrapper for simple-salesforce that creates a session and build valid SQL queries by passing query params rather than the raw sql.',
       classifiers=[
@@ -18,7 +18,7 @@ setup(name='SalesForceSession',
          'Programming Language :: Python :: 2.6',
          'Programming Language :: Python :: 2.7'
       ],
-      keywords=['salesforce', 'simple-salesforce', 'sql generator', 'salesforce sessions'],
+      keywords='salesforce simple-salesforce sessions',
       url='https://github.com/configuresystems/salesforce-session',
       author='John Martin',
       author_email='john.martin@configure.systems',
