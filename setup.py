@@ -5,8 +5,8 @@ def readme():
         return f.read()
 
 
-setup(name='SalesForceSession',
-      version='0.1',
+setup(name='salesforce-session',
+      version='0.1b',
       description='A wrapper for simple-salesforce that creates a session and build valid SQL queries by passing query params rather than the raw sql.',
       classifiers=[
          'Development Status :: 4 - Beta',
