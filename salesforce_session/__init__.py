@@ -1,20 +1,24 @@
-from simple_salesforce import Salesforce
 import json
 import marshal
 import os
+from simple_salesforce import Salesforce
 
 
 class SalesForceSession(Salesforce):
-    def __init__(self):
+    def __init__(self, username, password, security_token, client_id):
+        self.username = username
+        self._password = password
+        self._security_token = security_token
+        self.client_id = client_id
         self.session = self.__create_session()
 
     def __set_credentials(self):
         _credentials = dict(
-                username=os.environ['SF_USERNAME'],
-                password=os.environ['SF_PASSWORD'],
-                security_token=os.environ['SF_SECURITY_TOKEN'],
-                client_id=os.environ['SF_CLIENT_ID']
-                )
+            username=self.username,
+            password=self._password,
+            security_token=self._security_token,
+            client_id=self.client_id
+            )
         return _credentials
 
     def __convert_to_json(self, object_data):
@@ -23,11 +27,11 @@ class SalesForceSession(Salesforce):
     def __create_session(self):
         _credentials = self.__set_credentials()
         session = Salesforce(
-                **_credentials
-                )
+            **_credentials
+            )
         return session
 
-    def __build_fields(self, field_list=[]):
+    def __build_fields(self, field_list=None):
         if isinstance(field_list, list):
             fields = (',').join(field_list)
         return self.query_prep.append(fields)
@@ -61,7 +65,7 @@ class SalesForceSession(Salesforce):
 
 
     def query(self, query_type, fields, sql_object, conditions=None, limit=None):
-        query = self.__build_query(query_type,fields,sql_object,conditions,limit)
+        query = self.__build_query(query_type, fields, sql_object, conditions, limit)
         return self.__convert_to_json(self.session.query_all(query)['records'])
 
     def raw_query(self, query):
